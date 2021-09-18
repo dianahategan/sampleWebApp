@@ -1,0 +1,18 @@
+version: '3.6'
+
+
+services:
+
+    database:
+        container_name: sample_app_db
+        image: mysql:latest
+        environment: 
+            MYSQL_DATABASE: bookstore
+            MYSQL_ROOT_PASSWORD: ${mysql_root_password}
+        ports:
+            - 6603:3306
+        expose:
+            - 3306
+        volumes:
+            - ./db:/docker-entrypoint-initdb.d
+
